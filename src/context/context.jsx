@@ -5,9 +5,10 @@ const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const storedTheme =
     localStorage.getItem('darkTheme') === 'true' ? true : false;
+  const storedSearchItem = localStorage.getItem('searchItem');
   console.log(typeof storedTheme);
   const [isDarkTheme, setIsDarkTheme] = useState(storedTheme);
-  const [searchInput, setSearchInput] = useState('cat');
+  const [searchInput, setSearchInput] = useState(storedSearchItem || 'animals');
 
   const toggleTheme = () => {
     console.log('toggleTheme', isDarkTheme);

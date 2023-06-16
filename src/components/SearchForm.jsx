@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGlobalContext } from '../context/context';
 
 const SearchForm = () => {
-  const { setSearchInput } = useGlobalContext();
+  const { searchInput, setSearchInput } = useGlobalContext();
+
+  const [search, setSearch] = useState(searchInput || '');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(e.target.elements.search.value);
-    const searchValue = e.target.elements.search.value;
-    if (!searchValue) {
+    // const searchValue = e.target.elements.search.value;
+    if (!search) {
       return;
     }
 
     // console.log(searchValue);
-    setSearchInput(searchValue);
+    localStorage.setItem('searchItem', search);
+    setSearchInput(search);
   };
   return (
     <section>
@@ -23,6 +26,8 @@ const SearchForm = () => {
           type="text"
           name="search"
           id="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           className="form-input search-input"
           placeholder="Animals"
         />
