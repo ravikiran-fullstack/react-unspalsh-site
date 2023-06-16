@@ -19,7 +19,6 @@ const SearchForm = () => {
   };
   return (
     <section>
-      <h1 className="title">Unsplash Images</h1>
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           type="text"

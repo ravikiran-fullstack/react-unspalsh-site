@@ -5,6 +5,7 @@ const ThemeToggle = () => {
   const { isDarkTheme, toggleTheme } = useGlobalContext();
   return (
     <section className="toggle-container">
+      <h1 className="title">Unsplash Images</h1>
       <button className="dark-toggle" onClick={toggleTheme}>
         {isDarkTheme ? (
           <BsFillSunFill className="moon" />
