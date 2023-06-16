@@ -292,6 +292,7 @@ ul {
 .title {
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1rem;
 }
 
 .title-underline {
