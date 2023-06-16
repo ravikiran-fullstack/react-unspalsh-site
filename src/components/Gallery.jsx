@@ -19,7 +19,6 @@ const Gallery = () => {
     },
   });
 
-  // console.log(response);
 
   if (response.isLoading) {
     return (
@@ -38,7 +37,6 @@ const Gallery = () => {
   }
 
   const results = response.data.results;
-  // console.log(results);
 
   if (results.length < 1) {
     return (
@@ -52,7 +50,6 @@ const Gallery = () => {
     <section className="image-container">
       {results.map((item) => {
         const url = item?.urls?.regular;
-        // console.log(url);
         return (
           <img key={url} src={url} alt={item.alt_description} className="img" />
         );

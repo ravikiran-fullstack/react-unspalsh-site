@@ -14,7 +14,6 @@ const SearchForm = () => {
       return;
     }
 
-    // console.log(searchValue);
     localStorage.setItem('searchItem', search);
     setSearchInput(search);
   };
