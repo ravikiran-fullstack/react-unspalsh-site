@@ -5,6 +5,7 @@ import { useGlobalContext } from '../context/context';
 
 const Gallery = () => {
   let url = '';
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const { searchInput } = useGlobalContext();
 
@@ -12,7 +13,7 @@ const Gallery = () => {
     queryKey: ['images', searchInput],
     queryFn: async () => {
       const result = await axios.get(
-        `https://api.unsplash.com/search/photos?page=1&query=${searchInput}&client_id=eHP3GYDnv69BF75tuVq2eq6qhsR5i-u10vcojPuOgS4`
+        `https://api.unsplash.com/search/photos?page=1&query=${searchInput}&client_id=${apiKey}`
       );
       return result.data;
     },
