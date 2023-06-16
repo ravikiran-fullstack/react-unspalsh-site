@@ -69,16 +69,24 @@ html {
     background-color 0.3s ease-in-out;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --backgroundColor: var(--grey-50);
     --textColor: var(--grey-900);
   }
-}
+} */
 
 .dark-theme {
   --backgroundColor: var(--dark-mode-bg-color);
   --textColor: var(--dark-mode-text-color);
+}
+
+.moon {
+  color: white;
+}
+
+.sun {
+  color: black;
 }
 
 body {

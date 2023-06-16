@@ -1,21 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
-
-const url =
-  'https://api.unsplash.com/search/photos?page=1&query=dogs&client_id=eHP3GYDnv69BF75tuVq2eq6qhsR5i-u10vcojPuOgS4';
+import React, { useEffect } from 'react';
+import { useGlobalContext } from '../context/context';
 
 const Gallery = () => {
-  const response = useQuery({
-    queryKey: ['images'],
-    queryFn: async () => {
-      const result = await axios.get(url);
+  let url = '';
 
+  const { searchInput } = useGlobalContext();
+
+  const response = useQuery({
+    queryKey: ['images', searchInput],
+    queryFn: async () => {
+      const result = await axios.get(
+        `https://api.unsplash.com/search/photos?page=1&query=${searchInput}&client_id=eHP3GYDnv69BF75tuVq2eq6qhsR5i-u10vcojPuOgS4`
+      );
       return result.data;
     },
   });
 
-  console.log(response);
+  // console.log(response);
 
   if (response.isLoading) {
     return (
@@ -34,7 +37,7 @@ const Gallery = () => {
   }
 
   const results = response.data.results;
-  console.log(results);
+  // console.log(results);
 
   if (results.length < 1) {
     return (
@@ -48,8 +51,10 @@ const Gallery = () => {
     <section className="image-container">
       {results.map((item) => {
         const url = item?.urls?.regular;
-        console.log(url);
-        return <img src={url} alt={item.alt_description} className="img" />;
+        // console.log(url);
+        return (
+          <img key={url} src={url} alt={item.alt_description} className="img" />
+        );
       })}
     </section>
   );
